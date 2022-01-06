@@ -1,0 +1,30 @@
+{% extends 'core/base.html' %} {% block title %}Blog - Home{% endblock title %}
+{% block content %}
+<div class="row">
+  {% for post in posts %}
+  <div class="col-sm-5 my-3 shadow p-3 mx-auto">
+    <h3>{{post.title}}</h3>
+    <p>
+      <b>Author : <i>{{post.user}}</i> </b>
+    </p>
+    <p>{{post.description}}</p>
+    <small>{{post.created}}</small>
+  </div>
+  {% endfor %}
+</div>
+<div class="text-center mt-3">
+  <span>
+    {% if page_obj.has_previous %}
+    <a href="?page={{ page_obj.previous_page_number }}"
+      ><i class="fas fa-chevron-circle-left"></i
+    ></a>
+    {% endif %}
+    <span>{{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+    {% if page_obj.has_next %}
+    <a href="?page={{ page_obj.next_page_number }}"
+      ><i class="fas fa-chevron-circle-right"></i
+    ></a>
+    {% endif %}
+  </span>
+</div>
+{% endblock content %}

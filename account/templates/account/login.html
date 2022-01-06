@@ -1,0 +1,36 @@
+{% extends 'core/base.html' %}
+<!---->
+
+{% block title %}Blog - Login{% endblock title %}
+<!---->
+
+{% block content %}
+<h3 class="text-center my-3">Login</h3>
+<hr />
+<div class="row">
+  <div class="col-sm-10 offset-sm-1">
+    {% if messages %} {% for message in messages %}
+    <p class="alert alert-info">{{message}}</p>
+    {% endfor %} {% endif %}
+    <!---->
+    {% if form.non_field_errors %} {% for error in form.non_field_errors %}
+    <p class="alert alert-danger">{{error}}</p>
+    {% endfor %} {% endif %}
+    <form action="" method="post">
+      {% csrf_token %}
+      <label for="username">{{form.username.label}}</label>
+      {{form.username}}
+      <label for="password">{{form.password.label}}</label>
+      {{form.password}}
+      <a class="text-info" href="{% url 'password_reset' %}"
+        >Forget Password?</a
+      >
+      <br />
+      <input class="btn btn-warning px-3 my-3" type="submit" value="Login" />
+      <p class="text-center">
+        <b>Don't have an account ? <a href="{% url 'signup' %}">Sign Up</a></b>
+      </p>
+    </form>
+  </div>
+</div>
+{% endblock content %}

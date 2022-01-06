@@ -1,0 +1,26 @@
+{% extends 'core/base.html' %} <br />
+{% block title %}Blog - Profile{% endblock title %} <br />
+{% block content %}
+<h3 class="text-center my-3">Profile</h3>
+<hr />
+<div class="row">
+  <div class="col-sm-8 offset-sm-2 text-center my-3">
+    <h5>Name : {{user.full_name}}</h5>
+    <p><b> Email : {{user.email}} </b></p>
+    <p>
+      Address:
+      <!---->
+      {% if user.address %} {{user.address}} {% else %} None {% endif %}
+    </p>
+    <a class="btn btn-info px-3 btn-sm" href="{% url 'profileupdate' user.id %}"
+      >Update your Profile</a
+    >
+    <a class="btn btn-danger btn-sm px-3" href="{% url 'changepass' %}"
+      >Change Password</a
+    >
+    <a class="btn btn-warning px-3 btn-sm" href="{% url 'dashboard' %}"
+      >Back to Dashboard</a
+    >
+  </div>
+</div>
+{% endblock content %}

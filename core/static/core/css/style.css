@@ -1,0 +1,11 @@
+body {
+  color: aliceblue;
+  font-family: "Roboto Mono", monospace;
+}
+.container {
+  background-color: darkslateblue;
+}
+
+.postdes {
+  height: 120px;
+}

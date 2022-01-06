@@ -1,0 +1,44 @@
+{% extends 'core/base.html' %} <br />
+{% block title %}Blog - Update Profile{% endblock title %} <br />
+{% block content %}
+
+<h3 class="text-center my-3">Profile Update</h3>
+<hr />
+
+<div class="row">
+  <div class="col-sm-10 offset-sm-1">
+    <form action="" method="post">
+      {% csrf_token %}
+      <div class="row">
+        <div class="col-sm-6">
+          <label for="first_name">{{form.first_name.label}}</label>
+          {{form.first_name}}
+        </div>
+        <div class="col-sm-6">
+          <label for="last_name">{{form.last_name.label}}</label>
+          {{form.last_name}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <label for="email">{{form.email.label}}</label>
+          {{form.email}}
+        </div>
+        <div class="col-sm-6">
+          <label for="address">{{form.address.label}}</label>
+          {{form.address}}
+        </div>
+      </div>
+      <input
+        class="btn btn-info btn-sm px-3 my-3"
+        type="submit"
+        value="Update"
+      />
+      <a class="btn btn-warning btn-sm px-3 my-3" href="{% url 'dashboard' %}"
+        >Cancel</a
+      >
+    </form>
+  </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,42 @@
+{% extends 'core/base.html' %} <br />
+{% block title %}Blog - Dashboard{% endblock title %} <br />
+{% block content %}
+
+<h3 class="text-center my-3">Dashboard</h3>
+<hr />
+
+{% if messages %} {% for message in messages %}
+<p class="alert alert-info">{{message}}</p>
+{% endfor %} {% endif %}
+
+<div class="mx-4 mt-3">
+  <a class="btn btn-info px-3" href="{% url 'create' %}">Create Post</a>
+  <a class="btn btn-warning px-3" href="{% url 'profile' profile.id %}"
+    >Profile</a
+  >
+</div>
+
+{% if posts %}
+<div class="row">
+  {% for post in posts %}
+  <div class="col-sm-5 shadow p-3 mx-auto my-3">
+    <h3>{{post.title}}</h3>
+    <p>{{post.description}}</p>
+    <a class="btn btn-primary btn-sm px-3" href="{% url 'update' post.id %}"
+      >Update</a
+    >
+    <form class="d-inline" action="{% url 'delete' post.id %}" method="post">
+      {% csrf_token %}
+      <input
+        onclick='return confirm("Are you sure?")'
+        type="submit"
+        value="Delete"
+        class="btn btn-danger btn-sm px-3"
+      />
+    </form>
+  </div>
+  {% endfor %}
+</div>
+{% else %}
+<h3 class="text-center my-5">You don't have any post.</h3>
+{% endif %} {% endblock content %}

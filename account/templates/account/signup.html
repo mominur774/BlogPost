@@ -1,0 +1,59 @@
+{% extends 'core/base.html' %}
+<!---->
+
+{% block title %}Blog - Sign Up{% endblock title %}
+
+<!---->
+
+{% block content %}
+<h3 class="text-center my-3">Sign Up</h3>
+<hr />
+<div class="row">
+  <div class="col-sm-10 offset-sm-1">
+    {% if form.non_field_errors %} {% for error in form.non_field_errors %}
+    <p>{{error}}</p>
+    {% endfor %} {% endif %}
+    <form action="" method="post" novalidate>
+      {% csrf_token %}
+      <div class="row">
+        <div class="col-sm-12">
+          <label for="username">{{form.username.label}}</label>
+          {{form.username}}
+          <small class="text-danger">{{form.username.errors}}</small>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <label for="email">{{form.email.label}}</label>
+          {{form.email}} {{form.email.errors}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <label for="first_name">{{form.first_name.label}}</label>
+          {{form.first_name}}
+        </div>
+        <div class="col-sm-6">
+          <label for="last_name">{{form.last_name.label}}</label>
+          {{form.last_name}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <label for="password1">{{form.password1.label}}</label>
+          {{form.password1}}
+        </div>
+        <div class="col-sm-6">
+          <label for="password2">{{form.password2.label}}</label>
+          {{form.password2}}
+          <small class="text-danger">{{form.password2.errors}}</small>
+        </div>
+      </div>
+      <input class="btn btn-warning px-3 my-3" type="submit" value="Sign Up" />
+      <p class="text-center">
+        <b>Already have an account ? <a href="{% url 'login' %}">Login</a></b>
+      </p>
+    </form>
+  </div>
+</div>
+{% endblock content %}
